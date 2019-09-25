@@ -1,0 +1,26 @@
+@import "~vars";
+// reset css
+ol, ul, dl, p, h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+}
+body {
+  min-width: 1366px;
+  background: #364150!important;
+  margin: 0;
+}
+a, blockquote, body, button, dd, div, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, html, img, input, keygen, label, lengend, li, meter, ol, p, pre, progress, select, span, svg, table, td, textarea, th, ul {
+  font-family: PingFangSC-Light,helvetica neue,hiragino sans gb,tahoma,microsoft yahei ui,microsoft yahei,simsun,sans-serif;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+}
+
+// 覆盖 antd 默认样式
+#root {
+  ul, ol, dl, p {
+    margin-bottom: 0;
+  }
+}
