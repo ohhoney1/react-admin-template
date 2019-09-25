@@ -14,7 +14,7 @@ const config: IConfig = {
         dynamicImport: {
           webpackChunkName: true
         },
-        title: {{projectName}},
+        title: '{{projectName}}',
         dll: true
       }
     ]

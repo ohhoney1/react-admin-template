@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": {{projectName}},
-  "version": {{projectVersion}},
-  "description": {{projectDescription}},
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
   "scripts": {
     "start": "umi dev",
     "build": "umi build",
