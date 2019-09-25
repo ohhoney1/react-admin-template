@@ -1,0 +1,48 @@
+@import '~vars';
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 2;
+  padding: 0;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  &.logo_hide {
+    .logo_wrapper {
+      display: none;
+    }
+    .icon_fold {
+      margin-left: 13px;
+    }
+  }
+}
+.logo_wrapper {
+  width: 175px;
+  text-align: center;
+}
+.icon_fold {
+  font-size: 18px;
+  color: @ms-white;
+  opacity: 0.7;
+  transition: opacity .3s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.right {
+  display: flex;
+  margin-right: 40px;
+  color: @ms-white;
+  align-items: center;
+  font-size: 16px;
+
+  .username {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,49 @@
+@import "~vars";
+
+.ms_icon_button {
+  composes: flex-center;
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  border: 1px solid @ms-primary-color;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s;
+
+  svg {
+    width: 14px;
+    fill: @ms-primary-color;
+    transition: all .3s;
+  }
+
+  &:hover {
+    background: @ms-primary-color;
+    svg {
+      fill: @ms-white;
+    }
+  }
+
+  &.large {
+
+  }
+
+  &.active {
+    background: @ms-primary-color;
+    svg {
+      fill: @ms-white;
+    }
+  }
+
+  &.disabled, &.disabled:hover {
+    cursor: not-allowed;
+    border-color: #888;
+    background-color: transparent;
+    svg {
+      fill: #888;
+    }
+  }
+
+  & + .ms_icon_button {
+    margin-left: 10px;
+  }
+}

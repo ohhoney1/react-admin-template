@@ -1,18 +1,25 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+!.gitignore
 
-# Other files and folders
-.settings/
+# Dependency directories
+node_modules
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# misc
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# WebStorm
+.idea
+
+# Visual Studio Code
+.vscode
+.history
+*.log
+
+# umi
+.umi
+.umi-production
+
+# build
+# dist

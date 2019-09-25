@@ -1,0 +1,16 @@
+@import '~vars';
+
+.sider {
+  position: fixed;
+  height: calc(100vh - 64px);
+  top: 64px;
+  z-index: 1;
+
+  :global {
+    .ant-menu {
+      &-inline-collapsed {
+        // color: @ms-primary-color
+      }
+    }
+  }
+}

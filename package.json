@@ -1,0 +1,47 @@
+{
+  "private": true,
+  "name": "{{projectName}}",
+  "version": "{{projectVersion}}",
+  "description": "{{projectDescription}}",
+  "scripts": {
+    "start": "umi dev",
+    "build": "umi build",
+    "lint": "eslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "submit": "svn del dist/* && echo 打包构建中... && umi build && svn add dist/* && svn ci -m 'submit-compiling' dist && echo 打包构建完毕"
+  },
+  "dependencies": {
+    "antd": "^3.23.4",
+    "classnames": "^2.2.6",
+    "dva": "^2.6.0-beta.14",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.2.1",
+    "path-to-regexp": "^3.1.0",
+    "qs": "^6.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-router-breadcrumbs-hoc": "^3.2.3"
+  },
+  "devDependencies": {
+    "@moresec/eslint-config-moresec": "^1.1.0",
+    "@svgr/webpack": "^4.3.3",
+    "@types/classnames": "^2.2.9",
+    "@types/js-cookie": "^2.2.2",
+    "@types/node": "^12.7.7",
+    "@types/qs": "^6.5.3",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "@typescript-eslint/eslint-plugin": "^2.3.1",
+    "@typescript-eslint/parser": "^2.3.1",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "6.3.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "umi": "^2.9.6",
+    "umi-plugin-react": "^1.10.1",
+    "umi-types": "^0.4.1"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
