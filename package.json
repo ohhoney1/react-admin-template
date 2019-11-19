@@ -7,7 +7,7 @@
     "start": "umi dev",
     "build": "umi build",
     "lint": "eslint --fix \"src/**/*.ts\" \"src/**/*.tsx\"",
-    "submit": "svn del dist/* && echo 打包构建中... && umi build && svn add dist/* && svn ci -m 'submit-compiling' dist && echo 打包构建完毕"
+    "submit": "svn del dist/* && echo 打包构建中... && umi build && svn add dist/* && svn ci -m 'util:html: submit-compiling' dist && echo 打包构建完毕"
   },
   "dependencies": {
     "antd": "^3.23.4",

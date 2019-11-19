@@ -1,10 +1,7 @@
 import React from 'react'
 import { Form, Icon, Input, Button } from 'antd'
-import { WrappedFormUtils } from 'antd/lib/form/Form'
 import { FormComponentProps } from 'antd/lib/form'
 import { connect } from 'dva'
-import classNames from 'classnames'
-
 import { ConnectState, ConnectProps } from '@/models/connect'
 import LoginLogoImg from '@/assets/images/login_logo.png'
 import styles from './styles/index.less'
@@ -12,7 +9,6 @@ import styles from './styles/index.less'
 const FormItem = Form.Item
 
 interface IProp extends ConnectProps, FormComponentProps {
-  form: WrappedFormUtils
   submitting: boolean
 }
 
@@ -22,7 +18,7 @@ interface IState {
 
 class Login extends React.Component<IProp, IState> {
   state: IState = {
-    verificationCode: `/api/verification_code?_rnd${Math.random()}`
+    verificationCode: `/api/verify_code?_rnd=${+new Date()}`
   }
 
   nameInputRef = React.createRef<Input>()
@@ -33,7 +29,7 @@ class Login extends React.Component<IProp, IState> {
 
   refreshVerificationCode = () => {
     this.setState({
-      verificationCode: `/api/verification_code?_rnd${Math.random()}`
+      verificationCode: `/api/verify_code?_rnd=${+new Date()}`
     })
   }
 
@@ -79,16 +75,19 @@ class Login extends React.Component<IProp, IState> {
               {getFieldDecorator('verification_code', {
                 validateTrigger: 'onBlur',
                 rules: [{ required: true, len: 4, message: '请输入4位长度的验证码' }]
-              })(<Input className={classNames(styles.code_input, 'fl')} placeholder="验证码" />)}
-              <div className={classNames(styles.code, 'fr')}>
-                <img
-                  className="fl"
-                  src={verificationCode}
-                  alt="验证码"
-                  title="点击重新获取"
-                  onClick={this.refreshVerificationCode}
-                />
-              </div>
+              })(
+                <div className={styles.code_wrapper}>
+                  <Input className={styles.code_input} placeholder="验证码" />
+                  <div className={styles.code}>
+                    <img
+                      src={verificationCode}
+                      alt="验证码"
+                      title="点击重新获取"
+                      onClick={this.refreshVerificationCode}
+                    />
+                  </div>
+                </div>
+              )}
             </FormItem>
             <FormItem>
               <Button

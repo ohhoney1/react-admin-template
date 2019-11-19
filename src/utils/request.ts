@@ -13,7 +13,6 @@ interface IApiResponse {
   message: string
   result?: any
 }
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE' | string
 
 const codeMessage: MSObjectAny = {
   200: '服务器成功返回请求的数据',
@@ -86,15 +85,16 @@ const checkCode = (errorType: IconType = 'error', response: IApiResponse) => {
 /**
  * 请求信息
  * @param  {string} 请求接口地址
- * @param  {string} 请求方法
+ * @param  {RequestInit} options 请求体
  * @param  {string} 处理错误的类型 error warning info
- * @return {object} 包括 data 或者 err 的对象
+ * @return Promise<any> 包括 data 或者 err 的对象
  */
-const request = (url: string, method: Method = 'GET', errorType: IconType = 'error'): object => {
+const request = (url: string, options: RequestInit, errorType: IconType = 'error') => {
   const newOptions: any = {
     credentials: 'include',
-    method
+    ...options
   }
+  const { method = 'GET' } = options
   let compileUrl = ''
 
   if (['POST', 'PUT', 'DELETE'].includes(method)) {
@@ -117,7 +117,6 @@ const request = (url: string, method: Method = 'GET', errorType: IconType = 'err
         'Content-Type': 'application/json; charset=utf-8',
         ...newOptions.headers
       }
-      // newOptions.body = options.headers ? newOptions.body : JSON.stringify(newOptions.body)
     }
   } else if (method === 'GET') {
     const { params = {} } = newOptions
