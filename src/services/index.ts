@@ -1,7 +1,10 @@
 import { stringify } from 'qs'
 import { IconType } from 'antd/lib/notification'
 import request from '@/utils/request'
-import api from './api'
+import apis from './api'
+
+type ApiName = keyof typeof apis
+type ApiResponse = Record<ApiName, (opt?: any) => Promise<any>>
 
 const gen = (params: string) => {
   let url = params
@@ -17,13 +20,18 @@ const gen = (params: string) => {
     errorType = (paramsArray[2] || 'error') as IconType
   }
 
-  return (opt: any) => request(`/api${url}?${stringify(opt)}`, method, errorType)
+  return (opt?: any) => {
+    if (opt instanceof FormData) {
+      return request(`/api${url}`, { method, body: opt }, errorType)
+    }
+    return request(`/api${url}?${stringify(opt)}`, { method }, errorType)
+  }
 }
 
-const APIFunction: any = {}
-for (const key in api) {
-  if (api.hasOwnProperty(key)) {
-    APIFunction[key] = gen(api[key])
+const APIFunction: ApiResponse = {} as ApiResponse
+for (const key in apis) {
+  if (apis.hasOwnProperty(key)) {
+    APIFunction[key as ApiName] = gen(apis[key as ApiName])
   }
 }
 
